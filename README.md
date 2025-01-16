@@ -6,7 +6,7 @@ This TYPO3 extension provides an API to render TYPO3 Fluid templates and partial
 
 Inspired by the [Storybook TYPO3 Fluid plugin](https://github.com/philip-hartmann/storybook-typo3fluid), this extension extends the functionality to facilitate rendering and testing TYPO3 Fluid templates in external tools such as Storybook or other frontend environments.
 
-[Learn More](https://github.com/CasianBlanaru/typo3fluid-storybook-plugin/tree/main/frontend)
+Looking for the frontend integration? Check out the [TYPO3 Fluid Storybook Frontend](https://github.com/CasianBlanaru/typo3fluid-storybook).
 
 ---
 
@@ -16,6 +16,8 @@ Inspired by the [Storybook TYPO3 Fluid plugin](https://github.com/philip-hartman
 - **Rapid Frontend Development**: Connect TYPO3 templates with frontend tools like Storybook to test and preview components outside the TYPO3 environment.
 - **JSON-Based Communication**: Simplified integration with frontend applications using JSON request and response formats.
 - **TYPO3 v12 Compatible**: Fully compatible with TYPO3 12, leveraging the latest TYPO3 features.
+
+See her Frontend implementation: TYPO3 Fluid Storybook Frontend.
 
 ---
 
