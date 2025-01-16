@@ -1,5 +1,5 @@
 
-# TYPO3 Storybook Fluid API Extension
+# TYPO3 Storybook Fluid API Extension [Backend]
 
 This TYPO3 extension provides an API to render TYPO3 Fluid templates and partials through HTTP/HTTPS requests.
 **Compatible with TYPO3 12.**
