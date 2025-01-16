@@ -1,0 +1,45 @@
+# General Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.yarn-integrity
+
+# Composer dependencies
+/vendor/
+
+# TYPO3 configuration and cache
+/config/*
+/typo3temp/*
+/var/*
+!config/sites/*
+!config/system/*
+/public/fileadmin/_processed_/
+/public/fileadmin/_temp_/
+*.DS_Store
+*.log
+*.bak
+
+# Sensitive information
+/private/
+/.env
+/LocalConfiguration.php
+/AdditionalConfiguration.php
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.cache
+*.tmp
+
+# Public assets
+/public/typo3temp/
