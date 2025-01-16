@@ -62,10 +62,10 @@ You can send a POST request to the endpoint with the following JSON payload:
 
 ```json
 {
-  "template": "Pages/Default", // Path to the Fluid template
-  "partial": "Atomics/Button", // Optional path to a partial
-  "section": "content",        // Optional section name
-  "arguments": {               // Optional arguments for the template
+  "template": "Pages/Default",  /* Path to the Fluid template */
+  "partial": "Atomics/Button",  /*  Optional path to a partial */
+  "section": "content",         /* Optional section name */
+  "arguments": {                /* Optional arguments for the template */
     "key": "value"
   }
 }
