@@ -6,6 +6,8 @@ This TYPO3 extension provides an API to render TYPO3 Fluid templates and partial
 
 Inspired by the [Storybook TYPO3 Fluid plugin](https://github.com/philip-hartmann/storybook-typo3fluid), this extension extends the functionality to facilitate rendering and testing TYPO3 Fluid templates in external tools such as Storybook or other frontend environments.
 
+[Learn More](https://github.com/CasianBlanaru/typo3fluid-storybook-plugin/tree/main/frontend)
+
 ---
 
 ## Features
@@ -73,8 +75,6 @@ You can send a POST request to the endpoint with the following JSON payload:
 
 ### Response Structure
 
-The API will return the rendered output or an error message:
-
 #### Success Response
 ```json
 {
@@ -95,27 +95,111 @@ The API will return the rendered output or an error message:
 
 ## Example Workflow with Storybook
 
-1. Install [Storybook](https://storybook.js.org/) in your frontend project.
-2. Configure the TYPO3 Storybook Fluid API as a data source for your Storybook stories.
-3. Use the API to fetch and render Fluid templates or components within your Storybook environment.
-4. Pass template arguments dynamically to test your Fluid components.
+This example demonstrates how to integrate a TYPO3 Fluid template (`PersonsListTeaserFluid`) into Storybook for rendering and interactive customization.
 
-Example usage in Storybook:
+### Fluid Template Import
+
+The Fluid renderer is imported using the `FluidTemplate` function:
 
 ```javascript
+import FluidTemplate from '../../../../.storybook/typo3FluidTemplates';
+```
 
+### Define the Fluid Template Path
 
+Specify the path to the Fluid template:
+
+```javascript
+const PersonsListTeaserFluidpath = 'EXT:your_ext/Resources/Private/Partials/List/Item.html';
+```
+
+### Default Arguments
+
+Define default values for the template variables:
+
+```javascript
+const defaultArgs = {
+    fullName: 'Max Mustermann',
+    image: 'https://placehold.co/400x400/cc006e/white',
+    detailPage: '/detail-page',
+    position: 'Professor',
+    work: 'Lehrt Physik und Mathematik',
+    officeHours: 'Mo-Fr 10-12 Uhr',
+    telephone: '+49 30 12345678',
+    room: 'B-123',
+    email: 'max.mustermann@example.com',
+};
+```
+
+### Storybook Configuration
+
+The `PersonsListTeaserFluid` story is exported for use in Storybook:
+
+```javascript
+export default {
+    title: 'Molecules/PersonsListTeaserFluid',
+    parameters: {
+        layout: 'centered',
+    },
+    argTypes: {
+        fullName: { control: 'text', defaultValue: defaultArgs.fullName },
+        image: { control: 'text', defaultValue: defaultArgs.image },
+        detailPage: { control: 'text', defaultValue: defaultArgs.detailPage },
+        position: { control: 'text', defaultValue: defaultArgs.position },
+        work: { control: 'text', defaultValue: defaultArgs.work },
+        officeHours: { control: 'text', defaultValue: defaultArgs.officeHours },
+        telephone: { control: 'text', defaultValue: defaultArgs.telephone },
+        room: { control: 'text', defaultValue: defaultArgs.room },
+        email: { control: 'text', defaultValue: defaultArgs.email },
+    },
+};
+```
+
+### Define the Template
+
+Create a template function that renders the Fluid template:
+
+```javascript
+const Template = (args) => {
+    const html = FluidTemplate({
+        templatePath: PersonsListTeaserFluidpath,
+        variables: {
+            person: {
+                fullName: args.fullName,
+                image: args.image,
+                detailPage: args.detailPage,
+                position: { title: args.position },
+                work: args.work,
+                officeHours: args.officeHours,
+                telephone: args.telephone,
+                room: args.room,
+                email: args.email,
+            },
+        },
+    });
+
+    return `<div>${html}</div>`;
+};
+```
+
+### Export the Story
+
+The story is exported and connected to the default arguments:
+
+```javascript
+export const PersonsListTeaserFluid = Template.bind({});
+PersonsListTeaserFluid.args = {
+    ...defaultArgs,
+};
 ```
 
 ---
 
-## Configuration Options
+## Benefits
 
-You can customize the API behavior via TYPO3 settings:
-
-- **Endpoint Path**: Change the default `/fluid/render` endpoint in your extension's configuration.
-- **Access Control**: Restrict API usage with authentication or IP whitelisting.
-- **Debug Mode**: Enable detailed error messages for debugging during development.
+- **Interactive Testing**: Test Fluid templates dynamically in Storybook.
+- **Decoupled Development**: Render TYPO3 Fluid templates without a fully loaded TYPO3 environment.
+- **Modern Workflow**: Enable modern component-based frontend development.
 
 ---
 
