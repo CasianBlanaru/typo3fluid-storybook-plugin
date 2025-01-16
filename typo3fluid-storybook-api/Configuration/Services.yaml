@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  PixelCoda\TYPO3StorybookApi\:
+    resource: '../Classes/*'
+
+  PixelCoda\TYPO3StorybookApi\Middleware\StorybookApi:
+    public: true
