@@ -1,5 +1,5 @@
 
-# TYPO3 Storybook Fluid API
+# TYPO3 Storybook Fluid API Extension
 
 This TYPO3 extension provides an API to render TYPO3 Fluid templates and partials through HTTP/HTTPS requests.
 **Compatible with TYPO3 12.**
@@ -103,19 +103,8 @@ The API will return the rendered output or an error message:
 Example usage in Storybook:
 
 ```javascript
-export const Button = async () => {
-  const response = await fetch('/fluid/render', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      partial: 'Atomics/Button',
-      arguments: { label: 'Click Me', variant: 'primary' }
-    }),
-  });
 
-  const { data } = await response.json();
-  return data;
-};
+
 ```
 
 ---

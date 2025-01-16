@@ -1,5 +1,5 @@
 
-# TYPO3Fluid-to-Storybook
+# TYPO3Fluid-Storybook-JS-Integration
 
 Render TYPO3 Fluid templates inside Storybook.
 
